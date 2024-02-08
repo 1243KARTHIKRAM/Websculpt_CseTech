@@ -11,16 +11,14 @@
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            /* background: url('galleryback.jpg') no-repeat center center fixed;
-            background-size: cover; */
         }
-
+        
         .container {
             max-width: 600px;
             margin: 60px auto 20px; /* Adjust top margin for button */
             padding: 0 10px; /* Added padding for better layout */
         }
-
+        
         .post {
             margin-bottom: 20px;
             border: 1px solid #ccc;
@@ -28,69 +26,69 @@
             overflow: hidden;
             background-color: #fff;
         }
-
+        
         .post-header {
             display: flex;
             align-items: center;
             padding: 10px;
             background-color: #f2f2f2;
         }
-
+        
         .post-header img {
             width: 50px;
             height: 50px;
             border-radius: 50%;
             margin-right: 10px;
         }
-
+        
         .username {
             font-weight: bold;
         }
-
+        
         .post-image {
             width: 100%;
             display: block;
         }
-
+        
         .post-description {
             padding: 10px;
         }
-
+        
         .post-actions {
             padding: 10px;
             display: flex;
             justify-content: space-between;
         }
-
+        
         .comment {
             display: flex;
             align-items: center;
             padding: 5px;
         }
-
+        
         .comment img {
             width: 30px;
             height: 30px;
             border-radius: 50%;
             margin-right: 5px;
         }
-
+        
         /* Larger icon size */
         .post-actions span i {
             font-size: 24px; /* Adjust as needed */
             cursor: pointer; /* Add cursor pointer */
             transition: color 0.3s; /* Smooth color transition */
         }
-
+        
         /* Style for liked and disliked icons */
         .liked i {
             color: blue; /* Change color to blue for liked icon */
         }
-
+        
         .disliked i {
             color: red; /* Change color to red for disliked icon */
         }
-
+        
         /* Style for the fixed top button */
         .fixed-button {
             position: fixed;
@@ -98,7 +96,7 @@
             right: 10px;
             z-index: 1000;
         }
-
+        
         /* Style for the post form */
         #post-form {
             display: none;
@@ -106,7 +104,7 @@
             padding: 20px;
             border-radius: 5px;
         }
-
+        
         #post-form input[type="text"],
         #post-form input[type="file"] {
             display: block;
@@ -117,7 +115,7 @@
             border-radius: 3px;
             box-sizing: border-box;
         }
-
+        
         #post-form button {
             padding: 10px;
             background-color: #4CAF50;
@@ -126,18 +124,65 @@
             border-radius: 3px;
             cursor: pointer;
         }
-
+        
         #post-form button:hover {
             background-color: #45a049;
+        }
+        
+        /* Style for the modal */
+        .modal {
+            display: none; /* Hidden by default */
+            position: fixed; /* Stay in place */
+            z-index: 1000; /* Sit on top */
+            left: 0;
+            top: 0;
+            width: 100%; /* Full width */
+            height: 100%; /* Full height */
+            overflow: auto; /* Enable scroll if needed */
+            background-color: rgba(0,0,0,0.4); /* Black background with opacity */
+        }
+        
+        /* Modal content */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto; /* 10% from the top and centered */
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%; /* Could be more or less, depending on screen size */
+            border-radius: 5px;
+            position: relative;
+        }
+        
+        /* Close button */
+        .close {
+            position: absolute;
+            right: 20px;
+            top: 20px;
+            color: #aaa;
+            font-size: 30px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
 <body>
     <!-- Fixed top button for posting new content -->
        <!-- Fixed top button for posting new content -->
+       <a id="top"></a>
+
+       <!-- Fixed top button for posting new content -->
        <div class="fixed-button">
-        <i class="fas fa-plus-circle" onclick="togglePostForm()" style="font-size: 70px; color: green; cursor: pointer;"></i>
-    </div>
+           <a href="#top">
+               <i class="fas fa-plus-circle" onclick="togglePostForm()" style="font-size: 70px; color: green; cursor: pointer;"></i>
+           </a>
+       </div>
 
     <div class="container">
         <!-- Post form, initially hidden -->
@@ -445,10 +490,15 @@
         </div>
         <script>
             function togglePostForm() {
+                togglePostForm();
+                scrollToTop();
                 var postForm = document.getElementById('post-form');
                 postForm.style.display = postForm.style.display === 'none' ? 'block' : 'none';
             }
-    
+            function scrollToTop() {
+        window.scrollTo({top: 0, behavior: 'smooth'});
+    }
+        
             function submitPost() {
                 var profileName = document.getElementById('profile-name').value;
                 var description = document.getElementById('post-description').value;
@@ -456,29 +506,30 @@
                 var profilePic = profilePicInput.files[0];
                 var fileInput = document.getElementById('upload');
                 var file = fileInput.files[0];
-    
+        
                 if (profileName && description && profilePic && file) {
                     var reader = new FileReader();
                     reader.onload = function(event) {
                         var img = document.createElement('img');
                         img.src = event.target.result;
                         img.style.width = '100%';
-                        document.body.appendChild(img);
-                        var postElement = createPostElement(profileName, description, profilePic, img);
                         var container = document.querySelector('.container');
+                        container.insertBefore(img, container.firstChild); // Insert image at the top
+                        var postElement = createPostElement(profileName, description, profilePic, img);
                         container.appendChild(postElement);
                     };
                     reader.readAsDataURL(file);
+                    alert('Post submitted! Scroll down to see Your Post');
                 } else {
                     alert('Please provide your name, description, profile picture, and upload an image.');
                 }
             }
-    
+        
             // Function to create a post element
             function createPostElement(profileName, description, profilePic, imageElement) {
                 var post = document.createElement('div');
                 post.className = 'post';
-    
+        
                 // Post header with profile picture and name
                 var postHeader = document.createElement('div');
                 postHeader.className = 'post-header';
@@ -495,10 +546,10 @@
                 postHeader.appendChild(profilePicImg);
                 postHeader.appendChild(username);
                 post.appendChild(postHeader);
-    
+        
                 // Image
                 post.appendChild(imageElement);
-    
+        
                 // Description
                 var postDescription = document.createElement('div');
                 postDescription.className = 'post-description';
@@ -506,7 +557,7 @@
                 descriptionParagraph.textContent = description;
                 postDescription.appendChild(descriptionParagraph);
                 post.appendChild(postDescription);
-    
+        
                 // Actions
                 var postActions = document.createElement('div');
                 postActions.className = 'post-actions';
@@ -516,10 +567,10 @@
                 postActions.appendChild(createActionButton('far fa-share-square', ''));
                 postActions.appendChild(createActionButton('far fa-arrow-alt-circle-down', ''));
                 post.appendChild(postActions);
-    
+        
                 return post;
             }
-    
+        
             // Function to create an action button element
             function createActionButton(iconClass, onclickAction) {
                 var actionSpan = document.createElement('span');
@@ -530,7 +581,7 @@
                 actionSpan.appendChild(icon);
                 return actionSpan;
             }
-    
+        
             // JavaScript for liking posts
             function likePost(element) {
                 element.classList.toggle('liked');
@@ -540,7 +591,7 @@
                     element.querySelector('i').classList.remove('fas'); // Change to regular thumbs-up icon
                 }
             }
-    
+        
             // JavaScript for disliking posts
             function dislikePost(element) {
                 element.classList.toggle('disliked');
@@ -550,6 +601,11 @@
                     element.querySelector('i').classList.remove('fas'); // Change to regular thumbs-down icon
                 }
             }
+            function togglePostForm() {
+                var postForm = document.getElementById('post-form');
+                postForm.style.display = postForm.style.display === 'none' ? 'block' : 'none';
+            }
         </script>
+        
     </body>
     </html>

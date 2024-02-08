@@ -1,224 +1,351 @@
 <!DOCTYPE html>
-<html lang="en">
-
+<html dir="ltr" lang="en" >
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-    <title>My website</title>
-    <style>
-        body {
-            font-family: "Lato", sans-serif;
-            margin: 0;
-            background: url('https://t4.ftcdn.net/jpg/06/48/43/03/240_F_648430355_zyTnsEYFzONBcsTnfi9tJtx5vahgOpWS.jpg') no-repeat center center fixed;
-            background-size: cover;
-            box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0);
-            position: center;
-        }
+<title>Innovation Club</title>
 
-        .dimmed {
-            box-shadow: inset 0 0 0 1000px rgba(255, 255, 255, 0.623);
-        }
+<meta name="description">
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
+<meta name="robots" content="index, follow" />
+<meta name="googlebot" content="index, follow" />
+<meta NAME="revisit-after" CONTENT="15 days">
+<script type="text/javascript">
 
-        header {
-            position: relative;
-        }
+</script>
 
-        .club-container {
-            text-align: center;
-            padding: 20px 0;
-            background-color: rgba(255, 255, 255, 0);
-            z-index: 2;
-        }
-
-        .club-name {
-            font-family: 'Pacifico', cursive;
-            font-size: 40px;
-            color: #f3eded;
-        }
-
-        .logo-container {
-            position: absolute;
-            top: 30px;
-            right: 30px;
-            width: 200px;
-            height: 200px;
-            overflow: hidden;
-            border-radius: 50%;
-        }
-
-        .logo-container img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 50%;
-        }
-
-        .sidenav {
-            height: 100%;
-            width: 0;
-            position: fixed;
-            z-index: 1;
-            top: 0;
-            left: 0;
-            background-color: #050505;
-            overflow-x: hidden;
-            transition: 0.5s;
-            padding-top: 60px;
-        }
-
-        .sidenav a {
-            padding: 8px 8px 8px 32px;
-            text-decoration: none;
-            font-size: 25px;
-            color: #fff;
-            display: block;
-            transition: 0.3s;
-        }
-
-        .sidenav a:hover {
-            color: #f1f1f1;
-            background-color: rgba(255, 255, 255, 0.2);
-        }
-
-        .sidenav .closebtn {
-            position: absolute;
-            top: 0;
-            right: 25px;
-            font-size: 36px;
-            margin-left: 50px;
-            color: #ffffff;
-        }
-
-        @media screen and (max-height: 450px) {
-            .sidenav {
-                padding-top: 15px;
-            }
-
-            .sidenav a {
-                font-size: 18px;
-            }
-        }
-
-        .icon-button {
-            font-size: 40px;
-            cursor: pointer;
-            position: fixed;
-            top: 20px;
-            left: 20px;
-            z-index: 2;
-            color: #fff;
-            display: flex;
-            align-items: center;
-            width: 60px;
-            height: 60px;
-            justify-content: center;
-            background-color: rgb(0, 0, 0);
-            border-radius: 50%;
-        }
-
-        .icon-button span {
-            margin-left: 10px;
-            color: #ffffff9a;
-        }
-
-        .description {
-            position: center;
-            font-size: 24px;
-            color: #0f160efe;
-            background-color: rgba(255, 255, 255, 0.449);
-            padding: 10px;
-            margin: 10px auto;
-            max-width: 800px;
-            text-align: center;
-            z-index: 2;
-        }
-
-        .notification-bar {
-            position: center;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: #4CAF50;
-            color: white;
-            padding: 15px;
-            text-align: center;
-            display: none;
-            z-index: 3;
-        }
-
-        @keyframes slideDown {
-            from {
-                transform: translateY(-100%);
-            }
-
-            to {
-                transform: translateY(0);
-            }
-        }
-    </style>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Pacifico&display=swap">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
 </head>
 
-<body>
+<style type="text/css">
+     
+@font-face{font-family:system;font-style:normal;font-weight:400;src:local("Lato"),local(".SFNSText"),local(".HelveticaNeueDeskInterface"),local(".LucidaGrandeUI"),local("Ubuntu"),local("Segoe UI"),local("Roboto"),local("DroidSans"),local("Tahoma")}@font-face{font-family:Lato;font-style:normal;font-weight:400;font-display:swap;src:local('LatoRegular'),url(https://park.101datacenter.net/css/fonts/LatoRegular.woff2) format('woff2'),url(https://park.101datacenter.net/css/fonts/LatoRegular.woff) format('woff');unicode-range:U+000-5FF}.sr-only{position:absolute;left:-99999px;height:1px;width:1px;overflow:hidden}body{background-color:#202f35;padding:0;margin:0;font-family:Lato,system,sans-serif}.page-footer,.page-header,.page-section{display:grid;grid-template-columns:2% repeat(12,1fr) 2%}.page-row{display:flex;position:relative;flex-direction:column}.row_full{grid-column:2/span 12}.col-base{position:relative;display:flex;flex-direction:column;align-items:center}.page-footer.centered,.page-header.centered,.page-section.centered{text-align:center;align-self:center}.page-header h1{color:#6dcff6;font-size:1.5rem;font-weight:400;line-height:1.4;margin:2rem 0}.page-header h1 strong{color:#fff;display:block}.choice .col-base{background-color:#fff;padding:2rem;margin-top:3rem;margin-bottom:1.5rem}.choice-icon{width:4rem;height:4rem;display:inline-block;padding:1rem;margin:-5rem auto 0 auto}.choice-icon.yes,.choice-link.yes{background-color:#20a6d3}.choice-icon.no,.choice-link.no{background-color:#a48d33}.choice-icon svg{fill:#fff;height:100%;width:100%}.choice h3{margin:1.5rem 0 .75rem 0;line-height:1}.choice p{margin:0 0 1rem 0;font-size:.9rem;line-height:1}.choice-link{display:flex;color:#fff;text-decoration:none;padding:.75rem;align-items:center;justify-content:center;width:100%}.choice-link svg{fill:#fff;width:1.5rem;height:1.5rem;margin-right:.5rem}.company-logo{height:3rem;width:auto;margin:2rem 0}.upsell{margin-bottom:1.5rem}.upsell .row-col{background-color:#fff;column-gap:1rem;padding:2rem}.upsell .col-base{border-bottom:1px solid #d1dee3;padding-bottom:1.5rem;margin-bottom:1.5rem}.upsell .col-base:last-child{border-bottom:none;padding-bottom:0;margin-bottom:0}.upsell h3{margin:0 0 1rem 0;display:flex;align-items:center;justify-content:center;font-size:1.1rem}.upsell h3 img{height:1.5rem;width:auto}.upsell h3 svg{height:1.5rem;width:1.5rem;fill:#00aeef;margin-right:.5rem}.upsell p{font-size:.9rem;line-height:1.4;margin:0 0 1.5rem 0}.upsell .button{background-color:#fde668;padding:.5rem .75rem;display:inline-block;font-size:.9rem;color:#000;text-decoration:none;text-transform:uppercase;width:fit-content;margin:0 auto;line-height:1}@media only screen and (min-width:44.063em){.page-footer,.page-header,.page-section{grid-template-columns:10vw repeat(12,1fr) 10vw}.page-header h1{font-size:1.85rem;line-height:1.5;margin:3rem 0}.page-header h1 strong{font-size:3rem}.choice .row-col{gap:3rem}.choice .col-base{padding:2rem 3.5rem}.choice-link{width:auto}.choice-link.yes:hover{background-color:#14799b}.choice-link.no:hover{background-color:#756523}}@media only screen and (min-width:55.063em){.row-col{flex-direction:row;column-gap:6em}.col-base{align-items:initial}.col-half-width{flex:6}.col-third-width{flex:3}.upsell .col-base{border-bottom:none;padding-bottom:0;margin-bottom:0;border-right:1px solid #d1dee3;padding-right:1.5rem;margin-right:1.5rem;display:flex;flex-direction:column;justify-content:space-between;min-height:12rem}.upsell .col-base:last-child{border-right:none;padding-right:0;margin-right:0}.upsell .button:hover{background-color:#f0db64}}@media only screen and (min-width:55.063em) and (max-width:77em){.upsell h3{min-height:3rem}}@media only screen and (min-width:55.063em){.upsell .col-base{min-height:12rem}}@media only screen and (min-width:66.063em){body{background-size:cover;background-repeat:no-repeat;background-attachment:fixed}.webp body{background-image:url("https://imageio.forbes.com/specials-images/imageserve/522333933/Innovation-is-more-than-just-great-ideas-/960x0.jpg?format=jpg&width=960 ")}.no-webp body{background-image:url("https://imageio.forbes.com/specials-images/imageserve/522333933/Innovation-is-more-than-just-great-ideas-/960x0.jpg?format=jpg&width=960 ")}.upsell .col-base{min-height:10rem}}@media only screen and (min-width:77.063em){.upsell .col-base{min-height:8rem}}
+footer.page-footer {
+        background-color: #202f35;
+        color: #fff;
+        padding: 2rem 0;
+    }
 
-    <header>
-        <div class="club-container">
-            <div class="club-name">Innovation Club</div>
-        </div>
-    </header>
+    footer.page-footer .page-row {
+        display: flex;
+        justify-content: space-around;
+    }
 
-    <div class="logo-container">
-        <img src="https://th.bing.com/th/id/OIP.xHvFu2Js4W8rO1dmIrARDQHaHa?pid=ImgDet&w=200&h=200&c=7&dpr=1.3" alt="Club Logo">
-    </div>
-    <span class="icon-button" onclick="toggleNav()">&#9776;</span>
+    footer.page-footer h3 {
+        font-size: 1.2rem;
+        margin-bottom: 1rem;
+        color: #6dcff6;
+    }
 
-    <div id="mySidenav" class="sidenav">
-        <a href="javascript:void(0)" class="closebtn" onclick="toggleNav()">&times;</a>
-        <a href="#home"><i class="fa fa-fw fa-home"></i> Home</a>
-        <a href="about11.html"><i class="fa fa-fw fa-info-circle"></i> About</a>
-        <a href="achievement.html"><i class="fa fa-fw fa-trophy"></i> Achievements</a>
-        <a href="events.html"><i class="fa fa-fw fa-calendar"></i> Events</a>
-        <a href="#notification"><i class="fa fa-fw fa-bell"></i> Notification</a>
-        <a href="Studentchapter.html"><i class="fa fa-fw fa-graduation-cap"></i> Student Chapter</a>
-        <a href="facultychapter.html"><i class="fa fa-fw fa-graduation-cap"></i> Teacher Chapter</a>
-        <a href="gallery.html"><i class="fa fa-fw fa-image"></i> Gallery</a>
-        <a href="magazine.html"><i class="fa fa-fw fa-newspaper-o"></i> Magazine</a>
-        <a href="future.html"><i class="fa fa-fw fa-futbol-o"></i> Future of the Club</a>
-        <a href="signUpChoice.html"><i class="fa fa-fw fa-user"></i> Login</a>
-        <a href="help.html"><i class="fa fa-fw fa-envelope"></i> Contact</a>
-        <a href="help.html"><i class="fa fa-fw fa-question-circle"></i> Help</a>
-    </div>
+    footer.page-footer ul {
+        list-style-type: none;
+        padding: 0;
+    }
 
-    <div class="description">
-        <h2>Welcome to the Innovation Club!</h2>
-        <p>This is a place where creativity thrives and innovation is celebrated. Join us on a journey of exploration and discovery.</p>
-    </div>
+    footer.page-footer ul li {
+        margin-bottom: 0.5rem;
+    }
 
-    <div class="notification-bar" id="notificationBar">
-        <p>New notification: Don't miss our upcoming event on <strong>February 15th</strong>!</p>
-    </div>
+    footer.page-footer ul li a {
+        color: #fff;
+        text-decoration: none;
+        transition: color 0.3s ease;
+    }
 
-    <script>
-        function toggleNav() {
-            var sidenav = document.getElementById("mySidenav");
-            var body = document.body;
-
-            if (sidenav.style.width === "250px") {
-                sidenav.style.width = "0";
-                body.classList.remove('dimmed');
-            } else {
-                sidenav.style.width = "250px";
-                body.classList.add('dimmed');
-            }
+    footer.page-footer ul li a:hover {
+        color: #6dcff6;
+    }
+    .choice-icon img {
+            width: 100%;
+            height: 100%;
+            transition: transform 0.3s ease;
         }
 
-        // Show the notification bar after a delay
-        setTimeout(function() {
-            document.getElementById("notificationBar").style.display = "block";
-        }, 1000); // Adjust the delay (in milliseconds) as needed
-    </script>
+        .choice-icon:hover img {
+            transform: scale(1.1);
+        }
 
+        .choice-link {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .choice-link:hover .choice-icon.yes img {
+            content: url('image1.jpg');
+        }
+
+        .choice-link:hover .choice-icon.no img {
+            content: url('https://th.bing.com/th/id/OIP.bWqEfhWe28XdmIZV2H2f0wHaFK?rs=1&pid=ImgDetMain');
+        }
+        .choice-box {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+}
+
+.choice-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px; /* Adjust as needed */
+    background-color: rgba(255, 255, 255, 0.7); /* Adjust background color and opacity */
+    width: 100%;
+    box-sizing: border-box;
+}
+.choice-box {
+    background-size: cover;
+    background-position: center;
+    position: relative;
+    overflow: hidden;
+    width: 100%; /* Adjust as needed */
+    height: 200px; /* Adjust as needed */
+    transition: transform 0.3s ease;
+}
+
+.choice-box:hover {
+    transform: scale(1.1);
+}
+
+.choice-box img {
+    width: 100%;
+    height: 100%;
+    transition: transform 0.3s ease;
+}
+
+.choice-box:hover img {
+    transform: scale(1.1);
+}
+
+.choice-content {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    padding: 20px; /* Adjust as needed */
+    background-color: rgba(255, 255, 255, 0.7); /* Adjust background color and opacity */
+    width: 100%;
+    box-sizing: border-box;
+    transition: opacity 0.3s ease;
+    opacity: 0; /* Initially hidden */
+}
+
+.choice-box:hover .choice-content {
+    opacity: 1; /* Show on hover */
+}
+
+
+.choice-content p {
+    margin: 0;
+}
+.top-right-icons {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    z-index: 9999; 
+    /* Ensure it's above other content */
+    display: flex;
+    align-items: center;
+    
+}
+
+.fa-bell {
+    width: 40px; /* Adjust size as needed */
+    height: auto; /* Maintain aspect ratio */
+    margin-left: 10px; /* Adjust spacing between icons */
+    color: white;
+}
+.logo-container {
+            width: 60px; /* Adjust size as needed */
+            height: 60px; /* Adjust size as needed */
+            overflow: hidden;
+            border-radius: 50%; /* Make it circular */
+        }
+
+        .logo {
+            width: 100%; /* Ensure the image fills the container */
+            height: auto; /* Maintain aspect ratio */
+        }
+
+
+
+</style>
+</head>
+<body>
+<main role="main">
+    <main role="main">
+        <header class="page-header centered">
+            <div class="page-row row_full">
+                <h1>Empowered By...<strong>INNOVATION CLUB</strong></h1>
+            </div>
+        </header>
+        <section class="page-section choice centered">
+            <div class="page-row row_full row-col">
+                <div class="col-base col-half-width">
+                    <a href="facultychapter.html" class="choice-link">
+                        <div class="choice-icon yes">
+                            <img src="https://shlokacbseschool.com/wp-content/uploads/2023/04/faculty.jpg" alt="Faculty Chapter Image">
+                        </div>
+                        <h3>Faculty chapter</h3>
+                        <p>Click here to view...</p>
+                    </a>
+                </div>
+                <div class="col-base col-half-width">
+                    <a href="Studentchapter.html" class="choice-link">
+                        <div class="choice-icon no">
+                            <img src="https://th.bing.com/th/id/OIP.bWqEfhWe28XdmIZV2H2f0wHaFK?rs=1&pid=ImgDetMain" alt="Student Chapter Image">
+                        </div>
+                        <h3>Student chapter</h3>
+                        <p>Click here to see...</p>
+                    </a>
+                </div>
+            </div>
+        </section>
+<section class="page-section upsell centered">
+<div class="page-row row_full">
+<img class="company-logo" src="https://s3images.zee5.com/wp-content/uploads/2023/02/ANI-20230227132240.jpg" width="1000" height="200" />
+</div>
+<div class="page-row row_full row-col">
+<div class="col-base col-third-width">
+<h3>Future of Club</h3>
+<p>This club helps you to grow your innovaive skills</p>
+<a class="button" href="future.html">Learn More<span class="sr-only"> about the club</span></a>
+</div>
+<div class="col-base col-third-width">
+<h3>
+<span>Event Hosting</span>
+</h3>
+<p>Affordable hosting with tools to keep your growing talent running securely and efficiently.</p>
+<a class="button" href="events.html">Learn More<span class="sr-only"> about oue events</span></a>
+</div>
+<div class="col-base col-third-width">
+<h3>
+<span>Magazine</span>
+</h3>
+<p>"Explore the latest edition of our captivating magazine!"</p>
+<a class="button" href="magazine.html">Learn More<span class="sr-only"> about our coodinators</span></a>
+</div>
+</div>
+</section>
+<section class="page-section choice centered">
+    <div class="page-row row_full row-col">
+        <div class="col-base col-third-width">
+            <a href="achievement.html" class="choice-link">
+                <div class="choice-box achievements">
+                    <img src="https://th.bing.com/th/id/OIP.8OWykFYGFpsvbO0KjNoRjAHaEK?rs=1&pid=ImgDetMain" alt="Achievements Image">
+                    <div class="choice-content">
+                        <h3>Achievements</h3>
+                        <p>Click here to view...</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-base col-third-width">
+            <a href="gallery.html" class="choice-link">
+                <div class="choice-box gallery">
+                    <img src="https://cdn-icons-png.flaticon.com/512/752/752442.png" alt="Gallery Image">
+                    <div class="choice-content">
+                        <h3>Gallery</h3>
+                        <p>Click here to view...</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+        <div class="col-base col-third-width">
+            <a href="about11.html" class="choice-link">
+                <div class="choice-box about-us">
+                    <img src="https://th.bing.com/th/id/OIP.eALBozCOh6pcsmcokSs6QwHaHf?w=820&h=829&rs=1&pid=ImgDetMain" alt="About Us Image">
+                    <div class="choice-content">
+                        <h3>About Us</h3>
+                        <p>Click here to learn more...</p>
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+</section>
+
+
+<footer class="page-footer centered">
+    <div class="page-row row_full">
+        <div class="col-base col-half-width">
+            <h3>Contact Us</h3>
+            <ul>
+                <li>
+                    <a href="https://www.facebook.com/karthik.ram.90?mibextid=ZbWKwL">
+                        <i class="fab fa-facebook-f"></i> Facebook
+                    </a>
+                </li>
+                <li>
+                    <a href="https://www.instagram.com/1243karthikram?igsh=MTZlMndzbWZwMnZraw==">
+                        <i class="fab fa-instagram"></i> Instagram
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <div class="col-base col-half-width">
+            <h3>Quick Links</h3>
+            <ul>
+                <li><a href="#">Gallery</a></li>
+                <li><a href="#">Achievements</a></li>
+                <li><a href="#">Magazines</a></li>
+                <li><a href="#">Notifications</a></li>
+            </ul>
+        </div>
+        <div>
+            <h3>
+                About Us
+            </h3>
+            <ul>
+
+            </ul>
+        </div>
+    </div>
+</footer>
+
+</footer>
+
+</main>
+<div class="top-right-icons">
+    <a href="notification.html">
+    <i class="fas fa-bell"></i> <!-- Bell icon -->
+    </a>
+    <div class="logo-container">
+        <img src="https://th.bing.com/th/id/OIP.xHvFu2Js4W8rO1dmIrARDQHaHa?pid=ImgDet&w=200&h=200&c=7&dpr=1.3" alt="Logo" class="logo">
+</div>
+<a style="display:none;" href="https://cs.deviceatlas-cdn.com/smartclick" rel="nofollow">sc</a>
+<link rel="stylesheet" property="stylesheet" href="https://park.101datacenter.net/css/vendor-1.css?20230919044520" media="print" onload="this.media='all'">
+<script>
+function loadScript(url, callback) {
+var script = document.createElement("script");
+script.type = "text/javascript";
+script.async = true;
+if (script.readyState) {
+script.onreadystatechange = function () {
+if (script.readyState == "loaded" || script.readyState == "complete") {
+script.onreadystatechange = null;
+if (callback && typeof callback === "function") {
+callback();
+}
+}
+};
+} else {
+script.onload = function () {
+if (callback && typeof callback === "function") {
+callback();
+}
+};
+}
+script.src = url;
+(document.getElementsByTagName('body')[0]).appendChild(script);
+}
+loadScript("https://cs.deviceatlas-cdn.com/101dacs.js");
+loadScript("https://park.101datacenter.net/js/modernizr-webp.js?20230919044520");
+loadScript("https://park.101datacenter.net/js/jquery-3.6.0.min.js?20230919044520", function () {
+loadScript("https://park.101datacenter.net/js/pricing.js?20230919044520");
+});
+</script>
 </body>
-
 </html>

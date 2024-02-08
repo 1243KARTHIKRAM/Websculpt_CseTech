@@ -15,12 +15,24 @@
         }
       
         .container {
-            max-width: 800px;
-            margin: 20px auto;
+            display: flex;
+            flex-direction: row;
+            max-width: 1000px;
+            margin: 100px auto; /* Center the container vertically and horizontally */
             padding: 20px;
             background-color: rgba(255, 255, 255, 0.349); /* Add transparency */
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .calendar-container {
+            flex: 1;
+            margin-right: 20px;
+        }
+
+        .event-container {
+            flex: 1;
+            margin-left: 20px; /* Add space between the two containers */
         }
 
         h2 {
@@ -126,64 +138,71 @@
 </head>
 <body>
 <div class="container">
-    <h2>Monthly Calendar with Event Posting</h2>
+    <div class="calendar-container">
+        <h2>Monthly Calendar</h2><br>
+        <p>1--select month or year  2--fast double click on date to post on that day</p>
 
-    <div class="calendar">
-        <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
-            <select id="year-select" class="dropdown-button" onchange="generateCalendar()">
-                <!-- Add year options dynamically if needed -->
-            </select>
-            <select id="month-select" class="dropdown-button" onchange="generateCalendar()">
-                <option value="1">January</option>
-                <option value="2">February</option>
-                <option value="3">March</option>
-                <option value="4">April</option>
-                <option value="5">May</option>
-                <option value="6">June</option>
-                <option value="7">July</option>
-                <option value="8">August</option>
-                <option value="9">September</option>
-                <option value="10">October</option>
-                <option value="11">November</option>
-                <option value="12">December</option>
-            </select>
+        <div class="calendar">
+            <div style="display: flex; align-items: center; justify-content: center; margin-bottom: 10px;">
+                <select id="year-select" class="dropdown-button" onchange="generateCalendar()">
+                    <!-- Add year options dynamically if needed -->
+                </select>
+                <select id="month-select" class="dropdown-button" onchange="generateCalendar()">
+                    <option value="1">January</option>
+                    <option value="2">February</option>
+                    <option value="3">March</option>
+                    <option value="4">April</option>
+                    <option value="5">May</option>
+                    <option value="6">June</option>
+                    <option value="7">July</option>
+                    <option value="8">August</option>
+                    <option value="9">September</option>
+                    <option value="10">October</option>
+                    <option value="11">November</option>
+                    <option value="12">December</option>
+                </select>
+            </div>
+            <table>
+                <thead>
+                <tr>
+                    <th>Sun</th>
+                    <th>Mon</th>
+                    <th>Tue</th>
+                    <th>Wed</th>
+                    <th>Thu</th>
+                    <th>Fri</th>
+                    <th>Sat</th>
+                </tr>
+                </thead>
+                <tbody id="calendar-body">
+                <!-- Calendar cells will be generated dynamically here -->
+                </tbody>
+            </table>
         </div>
-        <table>
-            <thead>
-            <tr>
-                <th>Sun</th>
-                <th>Mon</th>
-                <th>Tue</th>
-                <th>Wed</th>
-                <th>Thu</th>
-                <th>Fri</th>
-                <th>Sat</th>
-            </tr>
-            </thead>
-            <tbody id="calendar-body">
-            <!-- Calendar cells will be generated dynamically here -->
-            </tbody>
-        </table>
+
+        <div class="event-form" style="display: none;">
+            <h3 style="margin-bottom: 10px;">Post Event</h3>
+            <form id="event-form" onsubmit="postEvent(); return false;">
+                <input type="text" id="event-text" placeholder="Enter event or reminder">
+                <input type="submit" value="Post">
+            </form>
+        </div>
     </div>
 
-    <div class="event-form" style="display: none;">
-        <h3 style="margin-bottom: 10px;">Post Event</h3>
-        <form id="event-form" onsubmit="postEvent(); return false;">
-            <input type="text" id="event-text" placeholder="Enter event or reminder">
-            <input type="submit" value="Post">
-        </form>
-    </div>
-
-    <div>
-        <h3>Events:1--select month or year  2---Fast double click on date for post the event on that day</h3><br>
-        <h3>Events:</h3>
-        <ul class="event-list" id="event-list">
+    <div class="event-container">
+        <h2>Events</h2>
+        <div id="event-list" class="event-list">
             <!-- Events will be displayed here -->
-        </ul>
+        </div>
     </div>
 </div>
+</body>
+</html>
+
 
 <script>
+    let events = {};
+
     // Function to generate calendar for the specified year and month
     function generateCalendar() {
         let yearSelect = document.getElementById("year-select");
@@ -262,10 +281,20 @@
             alert("Please select a date to post the event.");
             return;
         }
-        let eventList = document.getElementById("event-list");
-        let eventListItem = document.createElement("li");
-        eventListItem.textContent = selectedDate.toDateString() + ": " + eventText;
-        eventList.appendChild(eventListItem);
+        let year = selectedDate.getFullYear();
+        let month = selectedDate.getMonth() + 1;
+        let week = getWeek(selectedDate);
+        if (!events[year]) {
+            events[year] = {};
+        }
+        if (!events[year][month]) {
+            events[year][month] = {};
+        }
+        if (!events[year][month][week]) {
+            events[year][month][week] = [];
+        }
+        events[year][month][week].push({date: selectedDate, event: eventText});
+        displayEvents();
         selectedDate = null; // Reset selected date
         document.getElementById("event-text").value = ""; // Clear the input field
         hideEventForm();
@@ -274,6 +303,41 @@
     // Function to hide the event form
     function hideEventForm() {
         document.querySelector(".event-form").style.display = "none";
+    }
+
+    // Function to display events grouped by year, month, and week
+    function displayEvents() {
+        let eventList = document.getElementById("event-list");
+        eventList.innerHTML = "";
+        for (let year in events) {
+            let yearHeading = document.createElement("h3");
+            yearHeading.textContent = "Year: " + year;
+            eventList.appendChild(yearHeading);
+            for (let month in events[year]) {
+                let monthHeading = document.createElement("h4");
+                monthHeading.textContent = "Month: " + month;
+                eventList.appendChild(monthHeading);
+                for (let week in events[year][month]) {
+                    let weekHeading = document.createElement("h5");
+                    weekHeading.textContent = "Week: " + week;
+                    eventList.appendChild(weekHeading);
+                    let weekEventsList = document.createElement("ul");
+                    weekEventsList.classList.add("event-list");
+                    for (let i = 0; i < events[year][month][week].length; i++) {
+                        let eventItem = document.createElement("li");
+                        eventItem.textContent = events[year][month][week][i].date.toDateString() + ": " + events[year][month][week][i].event;
+                        weekEventsList.appendChild(eventItem);
+                    }
+                    eventList.appendChild(weekEventsList);
+                }
+            }
+        }
+    }
+
+    // Function to get the week number for a given date
+    function getWeek(date) {
+        let onejan = new Date(date.getFullYear(), 0, 1);
+        return Math.ceil((((date - onejan) / 86400000) + onejan.getDay() + 1) / 7);
     }
 
     // Dynamically populate year select options from 2000 to 2100

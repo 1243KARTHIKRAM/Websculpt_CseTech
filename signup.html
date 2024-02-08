@@ -11,7 +11,7 @@
       justify-content: center;
       align-items: center;
       height: 100vh;
-      background: url('homepagebackground.jpg') center/cover no-repeat; /* Replace 'background-image.jpg' with your image file */
+      background: url('https://t4.ftcdn.net/jpg/06/48/43/03/240_F_648430355_zyTnsEYFzONBcsTnfi9tJtx5vahgOpWS.jpg') center/cover no-repeat; /* Replace 'background-image.jpg' with your image file */
       overflow: hidden;
     }
 
@@ -64,12 +64,27 @@
 
   <div class="login-container">
     <h1>Login</h1>
-    <form>
-      <input type="text" placeholder="Username">
-      <input type="password" placeholder="Password">
+    <form id="loginForm" onsubmit="loginSuccess(event)">
+      <input type="text" id="username" placeholder="Username">
+      <input type="password" id="password" placeholder="Password">
       <button type="submit">Login</button>
     </form>
   </div>
+
+  <script>
+    function loginSuccess(event) {
+      event.preventDefault(); // Prevent form submission
+      // Get username and password values
+      var username = document.getElementById("username").value;
+      var password = document.getElementById("password").value;
+      // Check if username and password are valid (for demonstration, let's assume they are valid)
+      
+        // Display login success alert
+        alert("Login successful!");
+        window.location.href = "index.html";
+      
+    }
+  </script>
 
 </body>
 </html>
